@@ -1,0 +1,57 @@
+---------------------------------------------------------------------------------------------------
+
+DOCUMENTAÇÃO SISTEMA CATRACAS LOURENÇO FILHO
+
+DATA CRIAÇÃO: 26/07/2018
+DATA ULTIMA MODIFICAÇÃO: 26/07/2018 - MODIFICADO POR: DANIEL ROSENDO DE SOUZA
+
+CRIADO POR: DANIEL ROSENDO DE SOUZA
+
+----------------------------------------------------------------------------------------------------
+
+- Para cada modificação feita na DOCUMENTAÇÃO, mudar a data da modificação e o nome de quem modificou.
+
+->App
+ |
+  ->Http
+  |
+   ->Controllers
+   |
+    ->Auth - Pasta que contém a controler de autenticação de usuário, criação e modificação dos usuários.
+   |
+    ->Arquivo CatraControler.php - Classe que contém as funções de controle do sistema das catracas, lá possuí mais informações.
+    ->Arquivo Controller.php - Classe de controle de algumas autenticações.
+    ->Arquivo HomeController.php - Classe que controlar o pós login da aplicação.
+    ->Outros arquivos da pasta Controllers, ler documentação do Laravel, mas não é necessário mexer em outros arquivos, somente caso seja bastante necessários.
+ |
+  ->Classe Catraca.php - Classe que acessa o BD da tabela PASSECATRACAS.
+  ->Classe CatracaBioCadastrada - Classe que acessa o BD da tabela BIOMETRIACATRACA.
+  ->Classe CatracaPessSemCartao - Classe que acessa o BD da tabela FUNCIONARIOS (faz um lefjoin, leia a classe CatracaControler.php)
+  
+  ->Config
+   |
+    ->database.php - Classe que faz a configuração do database, a conecxão e o nome que irá receber os parametros
+    
+->Public - Pasta que irá ficar todos e quaiser arquivos css, js, img. Seguindo o padrão.
+
+->Resources
+ |
+  ->views - Pasta que contém o "html" que irá aparecer para o usuário, as telas, arquivos onde irá se encontrar código html para modificar o layout da página.
+  |
+   ->Auth - login / register - Arquivos que contém o layout das paginas de login e registro.
+  |
+   ->catraca - home / layoutpdf - Arquivos que contém o layout da pagina home e do layout que é impresso o pdf.
+  |
+   ->layouts - app / principal - App é o modelo exemplo que o laravel nos dá, principal é o layout principal da página, outras páginas herdam coisas dela como navbar e footer, qualquer modificaçào paradão para todas as outras é feita aqui.
+  |
+   ->Listagem - Pasta que contém todas as views de listagem do BD.
+|
+ ->home e welcome - Exemplos de páginas dada pelo Laravel.
+ 
+ ->routes - Pasta principal do laravel
+  |
+   ->web.php - Classe que controla as rotas (ou links das páginas), por onde cada click de link ira ir, local que mostra os links da página.
+   
+->.env - Arquivos que coloca-se as configurações de acesso ao banco de dados, é por ele que a aplicação se coneta ao banco, a classe database.php ela é só um escopo ou modelo de acesso para o laravel.
+
+Para mais informações, ler a documentação do laravel 5.6 - https://laravel.com/docs/5.6

@@ -1,5 +1,9 @@
 <?php
 
+/*
+Classe da home controle, controle de acesso, quando feito o login, ela irá fazer as requisições.
+*/
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;

@@ -17,27 +17,27 @@ class RegisterController extends Controller
     | Register Controller
     |--------------------------------------------------------------------------
     |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
+    Este controlador lida com o registro de novos usuários, bem como sua validação e criação. 
+    Por padrão, este controlador usa uma característica para fornecer essa funcionalidade sem exigir nenhum código adicional.
     |
     */
 
     use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
+     * Os usuários são redmencionados para /home depois de serem criados, somente usuários autenticados podem criar outros usuários, no caso o administrador
      *
      * @var string
      */
     protected $redirectTo = '/home';
     /**
-     * Create a new controller instance.
+     * Criação da nova instancia do controlador
      *
      * @return void
      */
     public function __construct()
     {
+        //Banco de dados Padrão MYSQL
         DB::setDefaultConnection('mysql');
         $this->middleware('auth');
     }

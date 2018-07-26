@@ -13,29 +13,28 @@ class LoginController extends Controller
     |--------------------------------------------------------------------------
     | Login Controller
     |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
+    | Esse controlador lida com usuários autenticados do aplicativo e os redireciona para sua tela inicial. 
+    | O controlador usa uma característica para fornecer convenientemente sua funcionalidade aos seus aplicativos.
     */
 
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
+     * Para onde o usuário será redirecionado, esse caso irá para a página home
      *
      * @var string
      */
     protected $redirectTo = '/home';
 
     /**
-     * Create a new controller instance.
-     *
+     * Criando uma nova instancia do controlador, banco de dados utilizado é o mysql
+     * Pois o banco de dados sqlserver usuário não possuí permissão de criar ou atualizar o banco
+     * 
      * @return void
      */
     public function __construct()
     {
+        //definindo o banco de dados padrão do sistema de login
         DB::setDefaultConnection('mysql');
         $this->middleware('guest')->except('logout');
     }
@@ -43,13 +42,14 @@ class LoginController extends Controller
 
     public function username()
     {
+        //Identificicador do usuário, podendo ser por e-mail ou nome (login), por padrão a identificação é por e-mail, mas nessa aplicação, o padrão será o login.
         $identity  = request()->get('identity');
         $fieldName = filter_var($identity, FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
         request()->merge([$fieldName => $identity]);
         return $fieldName;
     }
     /**
-     * Validate the user login.
+     * Validando o usuário, fazendo as requisições de login ou e-mail, pegando a senha e verificando a sua validade
      * @param Request $request
      */
     protected function validateLogin(Request $request)

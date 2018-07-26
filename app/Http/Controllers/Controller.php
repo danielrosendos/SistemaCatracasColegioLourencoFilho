@@ -1,5 +1,9 @@
 <?php
 
+/*
+Classe gerada automanticamente quando criado a pagina de login, provavelmente calsse de controles de acesso e validação dos dados
+*/
+
 namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;

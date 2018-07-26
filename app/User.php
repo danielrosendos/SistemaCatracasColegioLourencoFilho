@@ -1,5 +1,9 @@
 <?php
 
+/* 
+Classe de usuá®io, para a criação ou não de novos usuários.
+*/
+
 namespace App;
 
 use Illuminate\Notifications\Notifiable;

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -16,7 +17,6 @@ class LoginController extends Controller
     | Esse controlador lida com usuários autenticados do aplicativo e os redireciona para sua tela inicial. 
     | O controlador usa uma característica para fornecer convenientemente sua funcionalidade aos seus aplicativos.
     */
-
     use AuthenticatesUsers;
 
     /**
@@ -49,7 +49,7 @@ class LoginController extends Controller
         return $fieldName;
     }
     /**
-     * Validando o usuário, fazendo as requisições de login ou e-mail, pegando a senha e verificando a sua validade
+     *
      * @param Request $request
      */
     protected function validateLogin(Request $request)
@@ -72,12 +72,20 @@ class LoginController extends Controller
      */
     protected function sendFailedLoginResponse(Request $request)
     {
-        $request->session()->put('login_error', trans('auth.failed'));
-        throw ValidationException::withMessages(
-            [
-                'error' => [trans('auth.failed')],
-            ]
-        );
+        $errors = [$this->username() => trans('auth.failed')];
+        // Load user from database
+        $user = \App\User::where($this->username(), $request->{$this->username()})->first();
+        // Check if user was successfully loaded, that the password matches
+        // and active is not 1. If so, override the default error message.
+        if ($user && \Hash::check($request->password, $user->password) && $user->active != 1) {
+            $errors = [$this->username() => 'Your account is not active.'];
+        }
+        if ($request->expectsJson()) {
+            return response()->json($errors, 422);
+        }
+        return redirect()->back()
+            ->withInput($request->only($this->username(), 'remember'))
+            ->withErrors($errors);
     }
 
 }

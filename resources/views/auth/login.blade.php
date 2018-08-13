@@ -1,15 +1,19 @@
-@extends('layouts.principal') @section('conteudo')
+@extends('layouts.layoutlogin') @section('conteudo')
 <div class="page-header">
     <div class="container">
         <div class="col-md-4 content-center">
             <div class="card card-login card-plain">
-                <form class="form" method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
+                <form id="sign_in_adm" class="form" method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                     @csrf
-                    <div class="header header-primary text-center">
-                        <div class="logo-container">
+                    <div class="header header-primary text-center" style="margin-bottom: 80px;">
+                        <div class="logo-container" style="width: 150px; height:100px;">
                             <img src="{{ asset('img/logo.svg') }}">
                         </div>
                     </div>
+                    
+
+                    <div style="margin-top:100px"></div>
+
                     <div class="content">
                         <div class="input-group form-group-no-border input-lg">
                             <spam class="input-group-addon">
@@ -26,7 +30,7 @@
 
                         <div class="input-group form-group-no-border input-lg">
                             <span class="input-group-addon">
-                                <i class="now-ui-icons ui-1_send"></i>
+                                <i class="now-ui-icons ui-1_lock-circle-open"></i>
                             </span>
                             <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password"
                                 required placeholder="Digite Sua Senha">

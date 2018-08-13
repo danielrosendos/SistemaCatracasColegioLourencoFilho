@@ -5,7 +5,7 @@
     <div class="container">
         <div class="col-md-4">
             <div class="card card-login card-plain">
-                <form class="form" method="post" action="{{ action('CatracaControler@listaBioCadastrada') }}" aria-label="{{ __('Pesquisar') }}" role="search">
+                <form class="form" method="post" action="{{ action('CatracaControler@pesquisa_BioCadastrada') }}" aria-label="{{ __('Pesquisar') }}" role="search">
                     @csrf
                     <div class="content" aligh="center">
                         <div class="input-group form-group-no-border input-lg">

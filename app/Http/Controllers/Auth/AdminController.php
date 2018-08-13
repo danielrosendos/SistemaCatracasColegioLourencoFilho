@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class HomeController extends Controller
+class AdminController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -13,11 +14,12 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        DB::setDefaultConnection('mysql');
+        $this->middleware('auth:admin');
     }
 
     /**
-     * Show the application dashboard.
+     * show dashboard.
      *
      * @return \Illuminate\Http\Response
      */

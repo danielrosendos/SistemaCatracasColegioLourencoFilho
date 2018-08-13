@@ -24,9 +24,9 @@
     <nav class="navbar navbar-expand-lg bg-info">
         <div class="container">
             <div class="navbar-translate col-md-2 mx-md-5">
-                <a class="navbar-brand title" href="{{ action('CatracaControler@iniciar') }}" rel="tooltip" title="SICC - SISTEMA INTEGRADO CONTROLE CATRACAS"
+                <a class="navbar-brand title" href="{{ action('ControllerGB@iniciar') }}" rel="tooltip" title="SICC - SISTEMA INTEGRADO CONTROLE CATRACAS"
                     data-placement="bottom">
-                    SICC - SISTEMA INTEGRADO CONTROLE CATRACAS
+                    SICC - SISTEMA INTEGRADO CONTROLE CATRACAS - CADASTRO GUSTAVO BRIGIDO
                 </a>
                 <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -39,17 +39,17 @@
                 <ul class="navbar-nav">
                     @guest @else
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ action('CatracaControler@iniciar') }}">
-                            <p>Inicio</p>
+                        <a class="nav-link" href="{{ action('ControllerGB@iniciar') }}">
+                            <p>{{ __('Inicio') }}</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">
+                        <a class="nav-link" href="{{ action('ControllerGB@registrar') }}">
                             <p>{{ __('Registar Usuário') }}</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ action('CatracaControler@suporte') }}">
+                        <a class="nav-link" href="">
                             <p>{{ __('Suporte') }}</p>
                         </a>
                     </li>
@@ -61,17 +61,6 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ action('CatracaControler@listaBioCadastrada') }}">
-                                {{ __('Usuários com Biometria Cadastradas') }}
-                            </a>
-
-                            <a class="dropdown-item" href="{{ action('CatracaControler@listaControlCatrac') }}">
-                                {{ __('Controle Horário das Catracas') }}
-                            </a>
-
-                            <a class="dropdown-item" href="{{ action('CatracaControler@listaSemCartao') }}">
-                                {{ __('Usuário Sem Cartão Cadastrado') }}
-                            </a>
 
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

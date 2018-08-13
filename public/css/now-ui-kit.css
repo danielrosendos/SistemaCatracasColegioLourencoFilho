@@ -2274,7 +2274,7 @@ fieldset[disabled] .btn-link.active {
 
 .form-control {
     background-color: transparent;
-    border: 1px solid #E3E3E3;
+    border: 1px solid #0054ba;
     border-radius: 30px;
     color: #2c2c2c;
     line-height: normal;
@@ -2497,7 +2497,7 @@ fieldset[disabled] .btn-link.active {
 
 .input-group-addon {
     background-color: #FFFFFF;
-    border: 1px solid #E3E3E3;
+    border: 1px solid #0054ba;
     border-radius: 30px;
     color: #555555;
     padding: -0.5rem 0 -0.5rem -0.3rem;
@@ -2533,7 +2533,7 @@ fieldset[disabled] .btn-link.active {
 
 .input-group-focus .input-group-addon {
     background-color: #FFFFFF;
-    border-color: #f96332;
+    border-color: #0054ba;
 }
 
 .input-group-focus.form-group-no-border .input-group-addon {
@@ -2589,7 +2589,7 @@ textarea.form-control {
     padding: 10px 10px 0 0;
     resize: none;
     border: none;
-    border-bottom: 1px solid #E3E3E3;
+    border-bottom: 1px solid #0054ba;
     border-radius: 0;
     line-height: 2;
 }
@@ -3194,7 +3194,7 @@ p.description {
 .description,
 .card-description,
 .footer-big p {
-    color: #9A9A9A;
+    color: #000000;
     font-weight: 300;
 }
 
@@ -5463,7 +5463,7 @@ Created using IcoMoon - icomoon.io
 }
 
 .section {
-    padding: 70px 0;
+    padding: 0 0;
     position: relative;
     background: #FFFFFF;
 }
@@ -5485,7 +5485,7 @@ Created using IcoMoon - icomoon.io
 }
 
 .page-header {
-    height: 100vh;
+    height: 200vh;
     max-height: 1050px;
     padding: 0;
     color: #000000;
@@ -5885,7 +5885,7 @@ Created using IcoMoon - icomoon.io
 
 [data-background-color] .input-group-focus .input-group-addon {
     background-color: transparent;
-    border-color: #FFFFFF;
+    border-color: #000000;
     color: #FFFFFF;
 }
 

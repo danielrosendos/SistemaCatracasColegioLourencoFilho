@@ -1,4 +1,9 @@
 @extends('layouts.principal') @section('conteudo')
+
+@if(empty($chavepesquisa))
+<meta http-equiv="refresh" content="20" />
+@endif
+
 <h1 class="text-center">Listagem Controle Catracas</h1>
 
 <div align="center" class="pt-3">
@@ -44,7 +49,7 @@
             <td>{{ $c->MATRICULA }} </td>
             <td>{{ $c->OBSERVACAO }} </td>
             <td>{{ $c->NUM_CARTAO }} </td>
-            <td>{{ $c->{'DATA PASSAGEM'} }}</td>
+            <td>{{ date('d/m/Y', strtotime($c->{'DATA PASSAGEM'}))}}</td>
             <td>{{ $c->HORA }} </td>
             <td>{{ $c->{'DATA DA CONSULTA'} }} </td>
         </tr>

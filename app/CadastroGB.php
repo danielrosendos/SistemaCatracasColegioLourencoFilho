@@ -8,7 +8,7 @@ class CadastroGB extends Model
 {
     protected $connection = 'mysql';
 
-    public $timestamps = false;
+    public $timestamps = true;
 
     protected $primaryKey = 'id';
 

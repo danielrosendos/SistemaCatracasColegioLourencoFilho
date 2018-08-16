@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Mail;
 
+
 //Chamada das classes que contém acesso ao banco de dados / tabelas
 use App\Catraca;
 use App\CatracaBioCadastrada;
@@ -50,7 +51,7 @@ class CatracaControler extends Controller{
     //Mesmas definições acima se aplicam para as funções de listagem, mudando somente algumas coisas em relação a busca
     public function listaBioCadastrada(){
 
-        $catraca = CatracaBioCadastrada::orderBy('NOME', 'asc')->get();
+        $catraca = CatracaBioCadastrada::orderBy('NOME', 'asc')->paginate(60);
 
         return view('listagem.listaBioCada')->with(['catraca'=> $catraca]);
     }
@@ -106,7 +107,7 @@ class CatracaControler extends Controller{
                     ->orderBy('DATA PASSAGEM', 'desc')
                     ->orderBy('HORA', 'desc')->get();
 
-        return view('listagem.listaControlCatrac')->with(['catraca'=> $catraca, 'chavepesquisa'=> $request->texto]);
+        return view('listagem.listaControlCatrac')->with(['catraca'=> $catraca, 'chavepesquisa'=> $aux]);
     }
 
     //função não implementada de geração de PDF, utiliza o DOMPDF, biblioteca do laravel para criação de PDF

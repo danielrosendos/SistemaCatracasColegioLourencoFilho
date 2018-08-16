@@ -3,6 +3,7 @@
 Auth::routes();
 
 Route::group(['middleware' => 'admin'], function(){
+
     Route::any('/listarBioCadastrada', 'CatracaControler@listaBioCadastrada');
 
     Route::any('/listaControlCatrac/pesquisa', 'CatracaControler@pesquisa2');
@@ -25,9 +26,22 @@ Route::group(['middleware' => 'admin'], function(){
 });
 
 Route::group(['middleware' => 'user'], function(){
-    Route::any('/home', 'ControllerGB@iniciar');
-    Route::any('/registro', 'ControllerGB@registrar');
-    Route::any('/registro/cadastro', 'ControllerGB@adicionar');
+    
+    Route::any('/homeGB', 'ControllerGB@iniciar');
+
+    Route::any('/registro/{id}', 'ControllerGB@registrar')->where('id', '[0-9]+');
+
+    Route::any('/registro/cadastro/{id}', 'ControllerGB@adicionar')->where('id', '[0-9]+');
+
+    Route::any('/suporteGB', 'ControllerGB@suporteGB');
+
+    Route::any('/suporteGB/emailContato', 'ControllerGB@enviaEmailGB');
+
+    Route::any('/listagemGB', 'ControllerGB@listagem');
+
+    Route::any('/listagemGB/pesquisa', 'ControllerGB@pesquisaGB');
+
+    Route::any('/listagemGB/deletar/{id}', 'ControllerGB@deletar')->where('id', '[0-9]+');
 });
 
 Route::group(['middleware' => ['web','auth']], function(){
@@ -37,8 +51,7 @@ Route::group(['middleware' => ['web','auth']], function(){
             return view('gb.homegb');
             
         }else{
-            $users['users'] = \App\User::all();
-            return view('catraca.home', $users);
+            return view('catraca.home');
         }
     });
 });

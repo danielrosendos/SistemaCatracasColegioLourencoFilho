@@ -45,4 +45,18 @@
     @endforeach
   </tbody>
 </table>
+
+<div align="center" class="pt-3">
+    <div class="container">
+        <div class="col-md-4">
+            <div class="card card-login card-plain">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination pagination-info">
+                        @if(empty($chavepesquisa)) {{ $catraca->links() }} @endif
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
 @stop

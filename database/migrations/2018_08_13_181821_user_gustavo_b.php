@@ -14,12 +14,14 @@ class UserGustavoB extends Migration
     public function up()
     {
         Schema::connection('mysql')->create('gustavoB', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unique();
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('curso');
             $table->date('inicio');
             $table->date('fim');
+            $table->datetime('updated_at');
+            $table->datetime('created_at');
         });
     }
 

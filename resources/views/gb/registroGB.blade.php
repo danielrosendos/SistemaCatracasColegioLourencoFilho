@@ -2,39 +2,39 @@
 <div class="page-header">
     <div class="container">
         <div class="col-md-4 content-center mt-5 ">
-            <div class="card-header">{{ __('Registar Novo Usuário') }}</div>
-            <div class="card-body">
-            @if(old('name'))
-                <div class="alert alert-success">
-                    <strong>Sucesso!</strong> O produto {{ old('name') }} foi adicionado corretamente
-                </div>
+            @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>@foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li> @endforeach
+                </ul>
+            </div>
+            @endif 
+            @if(!($errors->has('email')) and !($errors->has('fim')) and old('name'))
+            <div class="alert alert-success">
+                <strong>Sucesso!</strong> O Aluno foi Adicionado/Atualizado corretamente
+            </div>
             @endif
-                <form method="POST" class="form" action="{{ action('ControllerGB@adicionar') }}" aria-label="{{ __('Register') }}">
+            <div class="card-header">{{ __('Registar Novo Aluno') }}</div>
+            <div class="card-body">
+                <form method="post" class="form" action="{{ action('ControllerGB@adicionar', empty($l->id) ? 0 : $l->id) }}" aria-label="{{ __('Register') }}">
                     @csrf
 
                     <div class="form-group row">
                         <label for="name" class="col-md-4 col-form-label text-md-right" require>{{ __('Nome') }}</label>
 
                         <div class="col-md-6">
-                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}"
-                                required autofocus> @if ($errors->has('name'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('name') }}</strong>
-                            </span>
-                            @endif
+                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name"  value="{{ empty($l->id) ?  '' : $l->name }}" required>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="email" class="col-md-4 col-form-label text-md-right" require>{{ __('Endereço de E-mail') }}</label>
+                        <label for="email" class="col-md-4 col-form-label text-md-right" require>{{ __('Endereço de E-mail')
+                            }}
+                        </label>
 
                         <div class="col-md-6">
-                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}"
-                                required> @if ($errors->has('email'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('email') }}</strong>
-                            </span>
-                            @endif
+                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ empty($l->id) ?  old('email') : $l->email }}"
+                                required>
                         </div>
                     </div>
 
@@ -42,28 +42,28 @@
                         <label for="curso" class="col-md-4 col-form-label text-md-right" require>{{ __('Curso') }}</label>
 
                         <div class="col-md-6">
-                            <input id="curso" type="text" class="form-control{{ $errors->has('curso') ? ' is-invalid' : '' }}" name="curso"
-                                required> @if ($errors->has('curso'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('curso') }}</strong>
-                            </span>
-                            @endif
+                            <input id="curso" type="text" class="form-control{{ $errors->has('curso') ? ' is-invalid' : '' }}" name="curso" value="{{ empty($l->id) ?  old('curso') : $l->curso }}"
+                                required>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="data-inicio" class="col-md-4 col-form-label text-md-right" require>{{ __('Data de Inicio') }}</label>
+                        <label for="inicio" class="col-md-4 col-form-label text-md-right" require>{{ __('Data de Início')
+                            }}
+                        </label>
 
                         <div class="col-md-6">
-                            <input id="data-inicio" type="date" class="form-control" name="data-inicio" required>
+                            <input id="inicio" type="date" class="form-control" name="inicio" value="{{ empty($l->id) ?  old('inicio') : $l->inicio }}"  required>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="data-fim" class="col-md-4 col-form-label text-md-right" require>{{ __('Data de Termino') }}</label>
+
+                        <label for="fim" class="col-md-4 col-form-label text-md-right" require>{{ __('Data de Termino') }}</label>
 
                         <div class="col-md-6">
-                            <input id="data-fim" type="date" class="form-control" name="data-fim" required>
+                            <input id="fim" type="date" class="form-control{{ $errors->has('fim') ? ' is-invalid' : '' }}" name="fim" value="{{ empty($l->id) ?  old('fim') : $l->fim }}"
+                                required>
                         </div>
                     </div>
 

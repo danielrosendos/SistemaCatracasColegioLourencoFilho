@@ -44,12 +44,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ action('ControllerGB@registrar') }}">
-                            <p>{{ __('Registar Usuário') }}</p>
+                        <a class="nav-link" href="{{ action('ControllerGB@registrar', 0) }}">
+                            <p>{{ __('Registar Aluno') }}</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="{{ action('ControllerGB@suporteGB') }}">
                             <p>{{ __('Suporte') }}</p>
                         </a>
                     </li>

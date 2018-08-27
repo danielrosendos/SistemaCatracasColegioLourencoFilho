@@ -2,9 +2,7 @@
 
 <div class="section section-team text-center">
     <div class="container">
-
-        <h2 class="title pb-5">
-            <img src="{{ asset('img/mob-logo.svg') }}" alt="Build Status" style="width: 100px; height:auto; margin-right:20px; max-width: 100%;"> Seja Bem Vindo ao SICC</h2>
+        <h2 class="title pb-5"><img src="{{ asset('img/mob-logo.svg') }}" alt="Build Status" style="width: 100px; height:auto; margin-right:20px; max-width: 100%;">Seja Bem Vindo ao SICC</h2>
         <div class="team mt-5">
             <div class="row">
                 <div class="col-md-4">

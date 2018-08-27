@@ -23,6 +23,8 @@ Route::group(['middleware' => 'admin'], function(){
     Route::get('/suporte', 'CatracaControler@suporte');
 
     Route::any('/suporte/emailContato', 'CatracaControler@enviaEmail');
+
+    Route::any('/teste', 'CatracaControler@teste');
 });
 
 Route::group(['middleware' => 'user'], function(){

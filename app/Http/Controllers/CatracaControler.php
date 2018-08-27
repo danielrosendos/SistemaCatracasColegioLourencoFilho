@@ -37,6 +37,10 @@ class CatracaControler extends Controller{
         return view('catraca.home');
     }
 
+    public function teste(){
+        return view('welcome');
+    }
+
     //Função de pesquisa / listagem de usuários que possuem biometria cadastrada
     public function listaControlCatrac(){
         //table paginada por 20 elementos

@@ -44,11 +44,6 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">
-                            <p>{{ __('Registar Usuário') }}</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{{ action('CatracaControler@suporte') }}">
                             <p>{{ __('Suporte') }}</p>
                         </a>

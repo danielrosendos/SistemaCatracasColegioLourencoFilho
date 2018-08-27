@@ -1,7 +1,7 @@
 <?php
 
-/* 
-Classe de usuá®io, para a criação ou não de novos usuários.
+/*
+Classe de usuário, para a criação ou não de novos usuários.
 */
 
 namespace App;
@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\DB;
 class Admin extends Authenticatable
 {
     use Notifiable;
-    
+
     protected $guard = 'admin';
 
     protected $connection = 'mysql';
-    
+
     /**
     * The attributes that are mass assignable.
     *
@@ -26,7 +26,7 @@ class Admin extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password','isAdmin',
     ];
-    
+
     /**
     * The attributes that should be hidden for arrays.
     *

@@ -14,11 +14,11 @@ class DatabaseSeeder extends Seeder
     {
         DB::setDefaultConnection('mysql');
         // $this->call(UsersTableSeeder::class);
-        DB::table('admins')->insert([
-            'name' => 'admin',
-            'email' => 'site@lourencofilho.com.br',
-            'password' => Hash::make('123456'),
-            'isAdmin' => 1,
+        DB::table('users')->insert([
+            'name' => 'gustavoB',
+            'email' => 'gustavoB@lourencofilho.com.br',
+            'password' => Hash::make('gustavob@123456'),
+            'isAdmin' => 0,
         ]);
     }
 }

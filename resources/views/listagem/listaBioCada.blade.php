@@ -14,13 +14,17 @@
                             </spam>
                             <input type="text" name="texto" class="form-control" placeholder="Pesquisar" autofocus>
                         </div>
-                           
+                        <input class="btn btn-info" type="submit" value="Pesquisar">
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+@if (empty($chavepesquisa))
+<h3>Total de Pessoas Cadastradas: {{ $contador }} </h3>
+@endif
 
 <table class="table table-striped table-bordered table-hover">
 

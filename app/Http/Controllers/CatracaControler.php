@@ -57,7 +57,9 @@ class CatracaControler extends Controller{
 
         $catraca = CatracaBioCadastrada::orderBy('NOME', 'asc')->paginate(60);
 
-        return view('listagem.listaBioCada')->with(['catraca'=> $catraca]);
+        $contador = CatracaBioCadastrada::count();
+
+        return view('listagem.listaBioCada')->with(['catraca'=> $catraca, 'contador' => $contador]);
     }
 
     public function listaSemCartao(){

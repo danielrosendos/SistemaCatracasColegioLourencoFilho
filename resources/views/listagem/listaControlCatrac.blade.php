@@ -19,7 +19,7 @@
                             </spam>
                             <input type="text" name="texto" class="form-control" placeholder="Pesquisar" autofocus>
                         </div>
-
+                        <input class="btn btn-info" type="submit" value="Pesquisar">
                     </div>
                 </form>
             </div>

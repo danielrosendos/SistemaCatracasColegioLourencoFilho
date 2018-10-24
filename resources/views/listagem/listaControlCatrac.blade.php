@@ -1,4 +1,4 @@
-@extends('layouts.principal') @section('conteudo')
+@extends('layouts.principal2') @section('conteudo')
 
 @if(empty($chavepesquisa))
 <meta http-equiv="refresh" content="20" />

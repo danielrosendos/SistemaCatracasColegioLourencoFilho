@@ -2951,13 +2951,15 @@ textarea.form-control:active {
 }
 
 .badge-success {
+    background-color: #18ce0f;
     border-color: #18ce0f;
-    color: #18ce0f;
+    color: #000000;
 }
 
 .badge-warning {
+    background-color: #FFB236;
     border-color: #FFB236;
-    color: #FFB236;
+    color: #000000;
 }
 
 .badge-danger {
@@ -5524,7 +5526,7 @@ Created using IcoMoon - icomoon.io
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     text-align: center;
-    padding: 0 15px;
+    padding: 0 100px 0 0;
     color: #000000;
     width: 100%;
     max-width: 880px;

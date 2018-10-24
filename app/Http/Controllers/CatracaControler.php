@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Mail;
 use App\Catraca;
 use App\CatracaBioCadastrada;
 use App\CatracaPessSemCartao;
+use App\ListaUsuariosCatraca;
+use App\Contato;
 use App\Mail\contatoEmail;
 
 
@@ -50,6 +52,12 @@ class CatracaControler extends Controller{
         do pdf.
         */
         return view('listagem.listaControlCatrac')->with(['catraca'=> $catraca]);
+    }
+
+    public function listaUsuariosCatraca(){
+        $catraca = ListaUsuariosCatraca::orderBy('NOME', 'asc')->paginate(60);
+
+        return view('listagem.listausuarioscatraca')->with(['catraca' => $catraca]);
     }
 
     //Mesmas definições acima se aplicam para as funções de listagem, mudando somente algumas coisas em relação a busca
@@ -100,6 +108,21 @@ class CatracaControler extends Controller{
         return view('listagem.listaBioCada')->with(['catraca'=> $catraca, 'chavepesquisa'=> $request->texto]);
     }
 
+    public function pesquisa_ListaUsuario(Request $request){
+        $aux = $request->texto;
+
+        if(empty($aux)){
+            return CatracaControler::listaUsuariosCatraca();
+        }
+
+        $catraca = ListaUsuariosCatraca::where('DEPARTAMENTO', 'like', '%'.$aux.'%')
+                                            ->orWhere('NOME', 'like', '%'.$aux.'%')->orWhere('NUM_CARTAO', 'like', '%'.$aux.'%')
+                                            ->orWhere('MATRICULA', 'like', '%'.$aux.'%')
+                                            ->orderBy('NOME', 'asc')->get();
+
+        return view('listagem.listausuarioscatraca')->with(['catraca' => $catraca, 'chavepesquisa' => $request->texto]);
+    }
+
     public function pesquisa2(Request $request){
         $aux = $request->texto;
         
@@ -129,8 +152,40 @@ class CatracaControler extends Controller{
         return view('email.email_site');
     }
 
+    public function attStatus(Request $request){
+        $aux = $request->id;
+        
+
+        if(empty($aux)){
+            return CatracaControler::chamados();
+        }
+
+        Contato::find($aux)->update(['status' => 1]);
+
+        return CatracaControler::chamados();
+    }
+
+    public function chamados(){
+        $contato = Contato::orderBy('created_at', 'desc')->paginate(20);
+
+        return view('email.chamado')->with(['contato'=> $contato]);
+    }
+
+    public function removeStatus(Request $request){
+
+        if(empty($request->id)){
+            return CatracaControler::chamados();
+        }
+
+        Contato::find($request->id)->delete();
+
+        return CatracaControler::chamados();
+    }
+
     public function enviaEmail(Request $request){
         $email = array('site@lourencofilho.com.br');
+
+        Contato::create($request->all());
 
         Mail::to($email)->cc('site@lourencofilho.com.br')->send(new contatoEmail($request));
 

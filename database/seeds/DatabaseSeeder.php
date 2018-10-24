@@ -15,9 +15,9 @@ class DatabaseSeeder extends Seeder
         DB::setDefaultConnection('mysql');
         // $this->call(UsersTableSeeder::class);
         DB::table('users')->insert([
-            'name' => 'portaria',
-            'email' => 'portaria@lourencofilho.com.br',
-            'password' => Hash::make('portaria@123456'),
+            'name' => 'bruno.nunes',
+            'email' => 'bruno.nunes@lourencofilho.com.br',
+            'password' => Hash::make('brunonunes123'),
             'isAdmin' => 1,
         ]);
     }

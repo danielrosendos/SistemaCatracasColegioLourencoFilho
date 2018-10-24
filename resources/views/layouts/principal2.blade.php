@@ -95,7 +95,7 @@
     </nav>
     <!-- End Navbar -->
 
-    <div class="container">
+    <div class="container"  style="max-width: 1400px;">
         <div class="tim-row tim-row-first">
             @yield('conteudo')
         </div>

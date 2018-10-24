@@ -1,4 +1,6 @@
 @extends('layouts.principal') @section('conteudo')
+<meta http-equiv="refresh" content="5; url={{ action('CatracaControler@chamados') }}">
+
 <div class="page-header">
     <div class="container">
         <div class="col-md-4 content-center">

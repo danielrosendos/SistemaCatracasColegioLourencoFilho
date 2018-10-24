@@ -25,6 +25,16 @@ Route::group(['middleware' => 'admin'], function(){
     Route::any('/suporte/emailContato', 'CatracaControler@enviaEmail');
 
     Route::any('/teste', 'CatracaControler@teste');
+
+    Route::any('/listausuarioscatraca', 'CatracaControler@listaUsuariosCatraca');
+
+    Route::any('/listausuarioscatraca/pesquisa', 'CatracaControler@pesquisa_ListaUsuario');
+
+    Route::any('/chamados/attStatus/{id}', 'CatracaControler@attStatus')->where('id', '[0-9]+');
+
+    Route::any('/chamados/remover/{id}', 'CatracaControler@removeStatus')->where('id', '[0-9]+');
+
+    Route::any('/chamados', 'CatracaControler@chamados');
 });
 
 Route::group(['middleware' => 'user'], function(){
